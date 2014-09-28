@@ -35,15 +35,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>  
     <div data-options="region:'center'" id="tab" style="border: 0px; overflow: hidden;">
     	<div class="easyui-tabs" fit="true" id="tabsroot">
-    		<div id="tomain" title="首页">首页</div>
+    		<div id="tomain" title="首页" class="easyui-layout" style="height:100%;" fit="true">
+				   <div data-options="region:'east',iconCls:'icon-reload',title:'附加功能区',split:false,collapsible:false" style="width:200px;">
+				   	 <div id="dates" style="width:200px;height:180px;"></div><!-- 日历 -->
+				   	 <p id="notice" style="width:auto;height:270px;  background-image: url('${pageContext.request.contextPath}/js/myicons/notice.jpg'); background-repeat:no-repeat"></p>
+				   </div>  
+				   <div data-options="region:'center',title:'消息提示区',border:false" id="messarea">
+				   	<p id="stockwar" style="height:180px;margin:0px;border:0px;"></p><!-- 仓库预警 -->
+				   	<p id="moneypay" style="height:180px;margin:0px;border:0px;"></p><!-- 付款提醒 -->
+				   	<p id="moneyget" style="height:180px;margin:0px;border:0px;"></p><!-- 收款提醒 -->
+				   </div>  			
+    		</div>
     	</div>
     </div>  
 </div>  
   	
   </body>
   <script type="text/javascript">
-  //动态加载左边树菜单
   $(function(){
+  
+		
+  		//ajax动态加载左边树菜单
   		$("#tt").tree({
   			url:'menus_getMenu.action',
   			lines:true,
@@ -52,6 +64,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				addTabs(node);
   			}
   		});
+  		
+  		//仓库预警
+  		$('#stockwar').panel({
+  		  fit:true,
+		  height:300,   
+		  title: '仓库预警',   
+		  tools: [{   
+		    iconCls:'icon-reload',   
+		    handler:function(){alert('new')}   
+		  }]   
+		});   
+  		//付款提醒
+  		$('#moneypay').panel({
+  		  fit:true,
+		  height:300,   
+		  title: '付款提醒',   
+		  tools: [{   
+		    iconCls:'icon-reload',   
+		    handler:function(){alert('new')}   
+		  }]   
+		});   
+  		//收款提醒
+  		$('#moneyget').panel({
+  		  fit:true,
+		  height:300,   
+		  title: '收款提醒',   
+		  tools: [{   
+		    iconCls:'icon-reload',   
+		    handler:function(){alert('new')}   
+		  }]   
+		});
+		
+		//附加功能区：日历
+		$('#dates').calendar({   
+    		current:new Date(),
+    		border:false   
+		});
+		   
+		//附加功能区：公告栏
+		$('#notice').panel({
+  		  fit:true,
+  		  border:true,
+		  height:300,   
+		});  
   });
   	
   	//点击菜单，在功能区新增一个tabs
