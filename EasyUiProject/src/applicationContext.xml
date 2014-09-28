@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	">
+	
+	<!-- 为了测试添加 的一个日期类 -->
+	<bean id="date" class="java.util.Date" />
+
+
+	<!-- 配置UsersDao 注入UsersDao 的依赖 sessionFactory -->
+	<bean id="usersDao" class="com.gdc.dao.impl.UsersDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="menuDao" class="com.gdc.dao.impl.MenuDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	<!-- 配置UsersService 注入UsersService 的依赖 usersDao-->
+	<bean id="usersService" class="com.gdc.service.impl.UsersServiceImpl">
+		<property name="usersDao" ref="usersDao"/>
+	</bean>
+	<bean id="menuService" class="com.gdc.service.impl.MenuServiceImpl">
+		<property name="menuDao" ref="menuDao"/>
+	</bean>
+
+	<!-- 配置UsersAction 注入UsersAction 的依赖 UsersService-->
+	<bean id="usersAction" class="com.gdc.acton.UsersAction">
+		<property name="usersService" ref="usersService"/>
+	</bean>
+	<bean id="menuAction" class="com.gdc.acton.MenuAction">
+		<property name="menuService" ref="menuService"/>
+	</bean>
+	
+	
+		
+
+	<!-- 
+		spring依赖sessionFactory和数据源(也就是连接数据库信息) 
+		class路径：
+			 Spring3-Persistence-Core=====>org.springframework.orm-3.0.1.RELEASE-A.jar
+			 =====>org.springframework.orm.hibernate3=====>LocalSessionFactoryBean.class
+	-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	
+	
+	
+	<!-- 
+		配置数据源(数据库连接信息)
+		class路径： 
+			c3p0====>c3p0-0.9.1.2.jar====>com.mchange.v2.c3p0====>ComboPooledDataSource.class
+	-->
+	<!-- mysql数据源 -->
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/easyui" />
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="user" value="root"/>
+		<property name="password" value="root"/>
+	</bean> -->
+	
+	<!-- sqlserver2008 数据源-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="jdbcUrl" value="jdbc:sqlserver://localhost:1433;databaseName=easyui" />
+		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+		<property name="user" value="sa"/>
+		<property name="password" value="guodacai"/>
+	</bean>
+
+
+
+	<!-- 
+		配置事务:
+		class路径：
+			Spring3-Persistence-Core====>org.springframework.orm-3.0.1.RELEASE-A.jar
+			=====>HibernateTransactionManager.class
+	 -->
+	 
+	 <!-- spring管理事务，需要依赖sessionFactory -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+
+
+
+	<!-- 配置AOP(切面)， 此配置只说明了类，并没有指定哪些具体事务-->
+	<!-- 
+		这里要加入要加载 aop标签前缀，也就是DTD文件里的一些内容：如下
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.gdc.dao.*.*(..))" id="cutlocation"/>
+		<aop:advisor advice-ref="advice" pointcut-ref="cutlocation"/>
+	</aop:config>
+	
+	
+	<!-- 设置具体的切入点 -->
+	<tx:advice id="advice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="*" propagation="SUPPORTS"/>
+		</tx:attributes>
+	</tx:advice>
+
+</beans>
