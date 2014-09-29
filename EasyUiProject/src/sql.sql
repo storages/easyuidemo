@@ -1,7 +1,7 @@
 -- 这是sqlserver2008 SQL
 
 -- users表
-insert into users(NAME,PASSWORD,EMAIL,ADDRESS) values(N'admin',N'admin',N'123456789@qq.com',N'广东省东莞市');
+insert into users(NAME,PASSWORD,EMAIL,ADDRESS) values('admin','admin','123456789@qq.com','广东省东莞市');
 
 -- menu表
 insert into menu(ID,PID,TEXT,STATE,URL) values (N'0',NULL,N'联硕管理系统',N'closed',NULL);
