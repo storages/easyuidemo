@@ -4,7 +4,7 @@
 	<package name="usersActionPackage" extends="struts-default">
 		<action name="users_*" class="usersAction" method="{1}">
 			<result name="success">/index.jsp</result>
-			<result name="reg">/pages/register.jsp</result>
+			<result name="reg">/pages/users.jsp</result>
 		</action>
 		<action name="menus_*" class="menuAction" method="{1}">
 			<result name="success">/index.jsp</result>

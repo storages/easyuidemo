@@ -38,4 +38,20 @@ public class UsersDaoImpl implements UsersDao {
 		return null;
 	}
 
+
+	@Override
+	public List<Users> view(Users users) {
+		List<Users> list = null;
+		if(users!=null){
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select u from Users u where 1=1 ";
+			if(users.getName()!=null && !"".equals(users.getName().trim())){
+				hql+=" and u.name ="+users.getName();
+			}
+			Query query = session.createQuery(hql);
+			list = query.list();
+		}
+		return list;
+	}
+
 }

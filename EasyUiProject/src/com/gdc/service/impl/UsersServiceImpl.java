@@ -1,5 +1,7 @@
 package com.gdc.service.impl;
 
+import java.util.List;
+
 import com.gdc.dao.UsersDao;
 import com.gdc.domain.Users;
 import com.gdc.service.UsersService;
@@ -20,6 +22,12 @@ public class UsersServiceImpl implements UsersService{
 	
 	public Users findUser(String uaername, String password){
 		return this.usersDao.findUser(uaername, password);
+	}
+
+
+	@Override
+	public List<Users> view(Users users) {
+		return this.usersDao.view(users);
 	}
 
 }
