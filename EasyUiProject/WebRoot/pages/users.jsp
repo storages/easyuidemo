@@ -3,13 +3,11 @@
 	$(function(){
 	  	$('#dg').datagrid({   
 	  		url:getPath()+'/users_view.action',
-	  		title:'用户列表',
-	  		iconCls:'icon-save',
 	  		pagination:true,
 	  		pageSize:10,
 	  		pageList:[10,20,30,40],
 	  		fit:true,
-	  		fitColumns:false,
+	  		fitColumns:true,
 	  		nowarp:false,
 	  		border:false,
 	  		idFiled:'id',
