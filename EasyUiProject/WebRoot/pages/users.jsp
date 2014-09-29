@@ -62,8 +62,14 @@
 	  			}
 	  		}]
 	  	});
+	  	
+	  	$('#sear').click(function(){
+	  		$('#dg').datagrid('load',{
+	  			usersname:$('#uname').val(),
+	  			address:$('#dress').val()
+	  		});
+	  	});
   	});
-  	
   	
 </script>
 <div data-options="region:'center', border:false title:'查询条件'" style="height:70px;">
@@ -71,13 +77,13 @@
 		<table class="tableCss datagrid-toolbar" style="width:100%;hight:100%;">
 			<tr>
 				<th style="text-align: right; font-size: 12px; width:80px;">用户名:</th>
-				<th><input name="usersname"/></th>
+				<th><input name="usersname" id="uname"/></th>
 			</tr>
 			<tr>
 				<th style="text-align: right; font-size: 12px; width:80px;">地址:</th>
 				<th>
-					<input name="address"/>
-					<a href="javascript:void(0);" class="easyui-linkbutton" onclick="" iconCls="icon-search">查询</a>
+					<input name="address" id="dress"/>
+					<a href="javascript:void(0);" class="easyui-linkbutton" id="sear" iconCls="icon-search">查询</a>
 				</th>
 			</tr>
 		</table>
