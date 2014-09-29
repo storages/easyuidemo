@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<div id="tomain" title="首页" class="easyui-layout" style="height:100%;" fit="true">
 				   <div data-options="region:'east',iconCls:'icon-reload',title:'附加功能区',split:false,collapsible:false" style="width:200px;">
 				   	 <div id="dates" style="width:200px;height:180px;"></div><!-- 日历 -->
-				   	 <p id="notice" style="width:auto;height:270px;  background-image: url('${pageContext.request.contextPath}/js/myicons/notice.jpg'); background-repeat:no-repeat"></p>
+				   	 <p id="notice" style="width:auto;height:100%;margin-top: 0px; padding:5px;word-break:break-all; word-wrap:break-word;"></p>
 				   </div>  
 				   <div data-options="region:'center',title:'消息提示区',border:false" id="messarea" fit="true">
 				   	<p id="stockwar" style="height:180px;margin:0px;border:0px;"></p><!-- 仓库预警 -->
@@ -99,12 +99,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//附加功能区：日历
 		$('#dates').calendar({   
     		current:new Date(),
-    		border:false   
+    		border:true   
 		});
 		   
 		//附加功能区：公告栏
 		$('#notice').panel({
   		  fit:true,
+  		  iconCls:'icon-notice',
+  		  title:'公告栏',
   		  border:true,
 		  height:300,   
 		});  

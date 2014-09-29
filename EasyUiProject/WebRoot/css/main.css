@@ -1,3 +1,10 @@
 .head_title{
 	background-color: #6495ED;
 }
+.tableCss th{
+	text-align: left;
+}
+.tableCss tr th input{
+	width:150px;
+	
+}
