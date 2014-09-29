@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <script type="text/javascript">
 	$(function(){
+	var editRow = undefined;
 	  	$('#dg').datagrid({   
 	  		url:getPath()+'/users_view.action',
 	  		pagination:true,
@@ -25,28 +26,56 @@
 	  			title:'姓名',
 	  			field:'name',
 	  			width:280,
-	  			sortable:true
+	  			sortable:true,
+	  			editor:{
+	  				type:'validatebox',
+	  				options:{
+	  					required:true
+	  				}
+	  			}
 	  		},{
 	  			title:'密码',
 	  			field:'password',
 	  			width:280,
-	  			sortable:true
+	  			sortable:true,
+	  			editor:{
+	  				type:'validatebox',
+	  				options:{
+	  					required:true
+	  				}
+	  			}
 	  		},{
 	  			title:'邮箱',
 	  			field:'email',
 	  			width:280,
-	  			sortable:true
+	  			sortable:true,
+	  			editor:{
+	  				type:'text'
+	  			}
 	  		},{
 	  			title:'地址',
 	  			field:'address',
 	  			width:280,
-	  			sortable:true
+	  			sortable:true,
+	  			editor:{
+	  				type:'text'
+	  			}
 	  		}]],
 	  		toolbar:[{
 	  			text:'新增',
 	  			iconCls:'icon-add',
 	  			handler:function(){
-	  				
+	  			if(editRow!=undefined){
+	  				$('#dg').datagrid('endEdit',editRow);
+	  			}
+	  				$('#dg').datagrid('insertRow',{
+	  					index:0,
+	  					row:{
+	  					
+	  					}
+	  				});
+	  				$('#dg').datagrid('beginEdit',0);
+	  				editRow = 0;
 	  			}
 	  		},'-',{
 	  			text:'删除',
@@ -57,6 +86,18 @@
 	  		},'-',{
 	  			text:'编辑',
 	  			iconCls:'icon-edit',
+	  			handler:function(){
+	  			
+	  			}
+	  		},'-',{
+	  			text:'取消编辑',
+	  			iconCls:'icon-undo',
+	  			handler:function(){
+	  			
+	  			}
+	  		},'-',{
+	  			text:'保存',
+	  			iconCls:'icon-save',
 	  			handler:function(){
 	  			
 	  			}
