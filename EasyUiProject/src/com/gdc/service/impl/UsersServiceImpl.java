@@ -26,8 +26,14 @@ public class UsersServiceImpl implements UsersService{
 
 
 	@Override
-	public List<Users> view(Users users) {
-		return this.usersDao.view(users);
+	public List<Users> view(Users users,int page,int rows) {
+		return this.usersDao.view(users,page,rows);
+	}
+
+
+	@Override
+	public Long getTotal(String clazz) {
+		return this.usersDao.getTotal(clazz);
 	}
 
 }

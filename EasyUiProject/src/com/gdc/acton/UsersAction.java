@@ -2,7 +2,9 @@ package com.gdc.acton;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +25,8 @@ public class UsersAction extends ActionSupport {
 	private Users users;
 	private String usersname;
 	private String pass;
+	private int page;
+	private int rows;
 	HttpServletResponse response;
 
 	/** 获取输出out对象 */
@@ -54,6 +58,22 @@ public class UsersAction extends ActionSupport {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
 	}
 
 	public void save() {
@@ -95,14 +115,16 @@ public class UsersAction extends ActionSupport {
 		try {
 			Users u = new Users();
 			u.setName(usersname);
-			List<Users> list = this.usersService.view(u);
+			List<Users> list = this.usersService.view(u,page,rows);
+			Map map = new HashMap();
+			map.put("total", this.usersService.getTotal("Users"));
+			map.put("rows", list);
 			ActionContext ctx = ActionContext.getContext();
 			response = (HttpServletResponse) ctx.get(org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
 			response.setCharacterEncoding("UTF-8");
 			Gson g = new Gson();
 			out = response.getWriter();
-			String str = g.toJson(list);
-			System.out.println(str);
+			String str = g.toJson(map);
 			out.print(str);
 			//return "view";
 		} catch (IOException e) {

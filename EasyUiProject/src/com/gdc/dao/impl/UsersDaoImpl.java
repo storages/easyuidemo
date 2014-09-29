@@ -40,7 +40,7 @@ public class UsersDaoImpl implements UsersDao {
 
 
 	@Override
-	public List<Users> view(Users users) {
+	public List<Users> view(Users users,int page,int rows) {
 		List<Users> list = null;
 		if(users!=null){
 			Session session = sessionFactory.getCurrentSession();
@@ -48,10 +48,22 @@ public class UsersDaoImpl implements UsersDao {
 			if(users.getName()!=null && !"".equals(users.getName().trim())){
 				hql+=" and u.name ="+users.getName();
 			}
+			
 			Query query = session.createQuery(hql);
+			query.setFirstResult((page-1)*rows).setMaxResults(rows);
 			list = query.list();
 		}
 		return list;
 	}
 
+	public Long getTotal(String clazz){
+		Long count = null;
+		if(null!=clazz && !"".equals(clazz.trim())){
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select count(*) from "+ clazz+" u ";
+			Query query = session.createQuery(hql);
+			count= (Long)query.uniqueResult();
+		}
+		return count;
+	}
 }
