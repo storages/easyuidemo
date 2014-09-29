@@ -6,5 +6,6 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/js/jquery-easyui-1.3.5/themes/icon.css" type="text/css"></link>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/js/myicons.css" type="text/css"></link>
   <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-easyui-1.3.5/locale/easyui-lang-zh_CN.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/js/publicjs/projectpath.js"></script>
 
 

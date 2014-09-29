@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   	 <div id="dates" style="width:200px;height:180px;"></div><!-- 日历 -->
 				   	 <p id="notice" style="width:auto;height:270px;  background-image: url('${pageContext.request.contextPath}/js/myicons/notice.jpg'); background-repeat:no-repeat"></p>
 				   </div>  
-				   <div data-options="region:'center',title:'消息提示区',border:false" id="messarea">
+				   <div data-options="region:'center',title:'消息提示区',border:false" id="messarea" fit="true">
 				   	<p id="stockwar" style="height:180px;margin:0px;border:0px;"></p><!-- 仓库预警 -->
 				   	<p id="moneypay" style="height:180px;margin:0px;border:0px;"></p><!-- 付款提醒 -->
 				   	<p id="moneyget" style="height:180px;margin:0px;border:0px;"></p><!-- 收款提醒 -->
