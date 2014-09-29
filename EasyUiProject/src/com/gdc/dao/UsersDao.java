@@ -7,6 +7,6 @@ import com.gdc.domain.Users;
 public interface UsersDao {
 	void save(Users users);
 	Users findUser(String uaername,String password);
-	List<Users> view(Users users,int page,int rows);
+	List<Users> view(Users users,int page,int rows,String sort,String order);
 	Long getTotal(String clazz);
 }

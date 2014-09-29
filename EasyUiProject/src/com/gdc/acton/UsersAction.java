@@ -24,9 +24,12 @@ public class UsersAction extends ActionSupport {
 	private UsersService usersService = null;
 	private Users users;
 	private String usersname;
+	private String address;
 	private String pass;
 	private int page;
 	private int rows;
+	private String sort;
+	private String order;
 	HttpServletResponse response;
 
 	/** 获取输出out对象 */
@@ -76,6 +79,30 @@ public class UsersAction extends ActionSupport {
 		this.rows = rows;
 	}
 
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public String getOrder() {
+		return order;
+	}
+
+	public void setOrder(String order) {
+		this.order = order;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public void save() {
 		System.out.println("姓名：" + users.getName());
 		System.out.println("密码：" + users.getPassword());
@@ -115,7 +142,7 @@ public class UsersAction extends ActionSupport {
 		try {
 			Users u = new Users();
 			u.setName(usersname);
-			List<Users> list = this.usersService.view(u,page,rows);
+			List<Users> list = this.usersService.view(u,page,rows,sort,order);
 			Map map = new HashMap();
 			map.put("total", this.usersService.getTotal("Users"));
 			map.put("rows", list);

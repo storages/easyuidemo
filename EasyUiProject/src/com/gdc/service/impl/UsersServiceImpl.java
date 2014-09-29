@@ -26,8 +26,8 @@ public class UsersServiceImpl implements UsersService{
 
 
 	@Override
-	public List<Users> view(Users users,int page,int rows) {
-		return this.usersDao.view(users,page,rows);
+	public List<Users> view(Users users,int page,int rows,String sort,String order) {
+		return this.usersDao.view(users,page,rows,sort,order);
 	}
 
 
