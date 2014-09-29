@@ -108,7 +108,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		  iconCls:'icon-notice',
   		  title:'公告栏',
   		  border:true,
-		  height:300,   
+		  height:300,
+		  href:getPath()+'/pages/scroll.jsp'   
 		});  
   });
   	
