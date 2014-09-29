@@ -142,6 +142,7 @@ public class UsersAction extends ActionSupport {
 		try {
 			Users u = new Users();
 			u.setName(usersname);
+			u.setAddress(address);
 			List<Users> list = this.usersService.view(u,page,rows,sort,order);
 			Map map = new HashMap();
 			map.put("total", this.usersService.getTotal("Users"));

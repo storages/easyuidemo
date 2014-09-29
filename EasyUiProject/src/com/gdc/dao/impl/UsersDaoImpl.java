@@ -44,7 +44,10 @@ public class UsersDaoImpl implements UsersDao {
 			Session session = sessionFactory.getCurrentSession();
 			String hql = "select u from Users u where 1=1 ";
 			if (users.getName() != null && !"".equals(users.getName().trim())) {
-				hql += " and u.name =" + users.getName();
+				hql += " and u.name like '%" + users.getName() +"%'";
+			}
+			if (users.getAddress() != null && !"".equals(users.getAddress().trim())) {
+				hql += " and u.address like '%" + users.getAddress() +"%'";
 			}
 			if ((sort != null && !"".equals(sort.trim()))&&(order != null && !"".equals(order.trim()))) {
 				hql+=" order by u."+sort + " "+order;
