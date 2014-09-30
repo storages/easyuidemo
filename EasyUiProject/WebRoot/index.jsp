@@ -41,9 +41,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   	 <p id="notice" style="width:auto;height:100%;margin-top: 0px; padding:5px;word-break:break-all; word-wrap:break-word;"></p>
 				   </div>  
 				   <div data-options="region:'center',title:'消息提示区',border:false" id="messarea" fit="true">
-				   	<p id="stockwar" style="height:180px;margin:0px;border:0px;"></p><!-- 仓库预警 -->
-				   	<p id="moneypay" style="height:180px;margin:0px;border:0px;"></p><!-- 付款提醒 -->
-				   	<p id="moneyget" style="height:180px;margin:0px;border:0px;"></p><!-- 收款提醒 -->
+				   	<p id="stockwar" style="margin:0px;border:0px;"></p><!-- 仓库预警 -->
+				   	<p id="moneypay" style="margin:0px;border:0px;"></p><!-- 付款提醒 -->
+				   	<p id="moneyget" style="margin:0px;border:0px;"></p><!-- 收款提醒 -->
 				   </div>  			
     		</div>
     	</div>
@@ -54,7 +54,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript">
   $(function(){
   
-		
+		var tabsOneHight = ($('#tabsroot').tabs('getSelected').height()-120)/3;
+		$('#stockwar').height(tabsOneHight);
+		$('#moneypay').height(tabsOneHight);
+		$('#moneyget').height(tabsOneHight);
   		//ajax动态加载左边树菜单
   		$("#tt").tree({
   			url:'menus_getMenu.action',
@@ -68,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		//仓库预警
   		$('#stockwar').panel({
   		  fit:true,
-		  height:300,   
+		  height:tabsOneHight,   
 		  title: '仓库预警',   
 		  tools: [{   
 		    iconCls:'icon-reload',   
@@ -78,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		//付款提醒
   		$('#moneypay').panel({
   		  fit:true,
-		  height:300,   
+		  height:tabsOneHight,   
 		  title: '付款提醒',   
 		  tools: [{   
 		    iconCls:'icon-reload',   
@@ -88,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		//收款提醒
   		$('#moneyget').panel({
   		  fit:true,
-		  height:300,   
+		  height:tabsOneHight,   
 		  title: '收款提醒',   
 		  tools: [{   
 		    iconCls:'icon-reload',   

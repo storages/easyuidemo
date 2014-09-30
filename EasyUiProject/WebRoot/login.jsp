@@ -25,30 +25,26 @@
 </head>
 
 <body>
-	<div id="login" title="用户登录"
-		style="width: 400px; height:200px; padding: 6px; text-align: center;">
-		<form action="" method="post" id="myform"
-			style="margin-top: 20px; margin-left:70px;">
-			<table>
-				<tr>
-					<td>用户名：<input type="text" value="" style="width:150px"
+	<div id="login" title="用户登录" style="width: 400px; height:200px; padding: 6px; text-align: center;">
+			<table style="width:100%; padding-top: 20px">
+				<tr align="right">
+					<td width="80%">用户名：<input type="text" value="" style="width:150px"
 						name="${users.name}" id="usersname" />
 					</td>
 					<td><span id="username" style="color:red;"></span>
 					</td>
 				</tr>
-				<tr>
-					<td>密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" value=""
+				<tr align="right">
+					<td width="80%">密&nbsp;&nbsp;码：<input type="password" value=""
 						style="width:150px" name="${users.password}" id="pass" />
 					</td>
 					<td><span id="password" style="color:red;"></span>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2"><input type="checkbox" id="forget" />记住密码</td>
+				<tr align="left">
+					<td colspan="2">　　　　&nbsp;&nbsp;<input type="checkbox" id="forget" />记住密码</td>
 				</tr>
 			</table>
-		</form>
 	</div>
 </body>
 <script type="text/javascript">
@@ -68,7 +64,7 @@
 						type: 'POST',
 						data : {
 							usersname : $('#usersname').val(),
-							pass : $('#pass').val()
+							password : $('#pass').val()
 						},
 						cache : false,
 						dataType : 'json',
@@ -76,12 +72,9 @@
 							if(result.isSuccess){
 								login.dialog('close');
 								window.location.href=getPath()+"/users_inMain.action";
-								$.messager.show({
-									title:'提示',
-									msg:result.info
-								});
+								$.messager.alert('提示',result.info);
 							}else{
-								alert(result.info);
+								$.messager.alert('Warning',result.info);
 							}
 						}
 					});
