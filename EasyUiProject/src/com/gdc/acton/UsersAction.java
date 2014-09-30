@@ -25,7 +25,8 @@ public class UsersAction extends ActionSupport {
 	private Users users;
 	private String usersname;
 	private String address;
-	private String pass;
+	private String password;
+	private String email;
 	private int page;
 	private int rows;
 	private String sort;
@@ -55,12 +56,12 @@ public class UsersAction extends ActionSupport {
 		this.usersname = usersname;
 	}
 
-	public String getPass() {
-		return pass;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public int getPage() {
@@ -103,6 +104,14 @@ public class UsersAction extends ActionSupport {
 		this.address = address;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public void save() {
 		System.out.println("ÐÕÃû£º" + users.getName());
 		System.out.println("ÃÜÂë£º" + users.getPassword());
@@ -120,7 +129,7 @@ public class UsersAction extends ActionSupport {
 		Gson g = new Gson();
 		JsonResult jr = new JsonResult();
 		try {
-			Users u = this.usersService.findUser(usersname, pass);
+			Users u = this.usersService.findUser(usersname, password);
 			if (null != u) {
 				jr.setInfo("µÇÂ¼³É¹¦!");
 				jr.setObj(u);
@@ -168,5 +177,14 @@ public class UsersAction extends ActionSupport {
 
 	public String regester() {
 		return "reg";
+	}
+	
+	public void saveUsers(){
+		Users u = new Users();
+		u.setName(usersname);
+		u.setAddress(address);
+		u.setEmail(email);
+		u.setPassword(password);
+		
 	}
 }

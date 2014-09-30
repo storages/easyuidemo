@@ -7,22 +7,9 @@
 <hibernate-configuration>
 
 <session-factory>
-	<property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
-	<!-- <property name="connection.url">jdbc:sqlserver://localhost:1433;databaseName=easyui</property>
-		<property name="connection.username">sa</property>
-		<property name="connection.password">guodacai</property>
-		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-		<property name="myeclipse.connection.profile">sqlserver2008</property> -->
+	<!-- mysql方言 -->
+	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 	<!-- 关联Users实体类的配置文件 -->
-	<!-- <property name="myeclipse.connection.profile">mysql</property>
-		<property name="connection.url">
-		jdbc:mysql://localhost:3306/fms
-		</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">root</property>
-		<property name="connection.driver_class">
-		com.mysql.jdbc.Driver
-		</property> -->
 	<property name="hbm2ddl.auto">update</property>
 	<mapping resource="com/gdc/domain/users.hbm.xml" />
 	<mapping resource="com/gdc/domain/menu.hbm.xml" />

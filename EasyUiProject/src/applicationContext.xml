@@ -66,20 +66,20 @@
 			c3p0====>c3p0-0.9.1.2.jar====>com.mchange.v2.c3p0====>ComboPooledDataSource.class
 	-->
 	<!-- mysql数据源 -->
-	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/easyui" />
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
 		<property name="user" value="root"/>
 		<property name="password" value="root"/>
-	</bean> -->
+	</bean>
 	
 	<!-- sqlserver2008 数据源-->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="jdbcUrl" value="jdbc:sqlserver://localhost:1433;databaseName=easyui" />
 		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
 		<property name="user" value="sa"/>
 		<property name="password" value="guodacai"/>
-	</bean>
+	</bean> -->
 
 
 
