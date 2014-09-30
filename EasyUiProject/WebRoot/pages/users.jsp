@@ -145,11 +145,30 @@
 				iconCls : 'icon-save',
 				handler : function() {
 					$('#dg').datagrid('endEdit', editRow);
+					
 				}
 			},'-' ],
 			onAfterEdit : function(rowIndex, rowData, changes) {
 				console.info(rowData);
 				editRow = undefined;
+				$.ajax({
+						url : getPath() + '/users_saveUsers.action',
+						type: 'POST',
+						data : {
+							
+						},
+						cache : false,
+						dataType : 'json',
+						success : function(result) {
+							if(result.isSuccess){
+								login.dialog('close');
+								window.location.href=getPath()+"/users_inMain.action";
+								$.messager.alert('提示',result.info);
+							}else{
+								$.messager.alert('提示',result.info);
+							}
+						}
+					});
 			},
 			onDblClickRow:function(rowIndex, rowData){
 				if (editRow != undefined) {
