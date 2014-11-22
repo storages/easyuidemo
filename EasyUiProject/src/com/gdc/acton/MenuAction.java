@@ -65,6 +65,7 @@ public class MenuAction extends ActionSupport {
 			}
 			tree.add(node);
 		}
+		
 		writeJson(tree);
 	}
 

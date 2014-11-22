@@ -196,15 +196,16 @@
 	<form id="users_action_findForm">
 		<table class="tableCss datagrid-toolbar" style="width:100%;hight:100%;">
 			<tr>
-				<th style="text-align: right; font-size: 12px; width:80px;">姓名:</th>
-				<th><input name="usersname" id="uname" />
-				</th>
+				<th style="text-align: right; font-size: 12px; width:35px;">姓名:</th>
+				<th style="width: 80px;"><input name="usersname" id="uname" /></th>
+				<th style="text-align: right; font-size: 12px; width: 35px;">地址:</th>
+				<th style="padding-right: 670px;"><input name="address" id="dress" /><a href="javascript:void(0);" class="easyui-linkbutton" id="sear" iconCls="icon-search" style="float: right;">查询</a> <!-- <input type="button" value="查询" id="sear" style="width:50px;"/> --> </th>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<th style="text-align: right; font-size: 12px; width:80px;">地址:</th>
 				<th><input name="address" id="dress" /><input type="button" value="查询" id="sear" style="width:50px;"/> </th>
-			<!-- 	<a href="javascript:void(0);" class="easyui-linkbutton" id="sear" iconCls="icon-search">查询</a> --> 
-			</tr>
+				<a href="javascript:void(0);" class="easyui-linkbutton" id="sear" iconCls="icon-search">查询</a> 
+			</tr> -->
 		</table>
 	</form>
 </div>
