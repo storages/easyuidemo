@@ -31,6 +31,7 @@ public class UsersAction extends ActionSupport {
 	private int rows;
 	private String sort;
 	private String order;
+	private String ids;
 	HttpServletResponse response;
 
 	/** 获取输出out对象 */
@@ -112,6 +113,14 @@ public class UsersAction extends ActionSupport {
 		this.email = email;
 	}
 
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+
 	public void save() {
 		System.out.println("姓名：" + users.getName());
 		System.out.println("密码：" + users.getPassword());
@@ -186,5 +195,24 @@ public class UsersAction extends ActionSupport {
 		u.setEmail(email);
 		u.setPassword(password);
 		
+	}
+	
+	public void delete(){
+		if(ids!=null && !ids.trim().equals("")){
+			try {
+				String [] idsArr = ids.split(",");
+				this.usersService.delete(idsArr);
+				ActionContext ctx = ActionContext.getContext();
+				response = (HttpServletResponse) ctx.get(org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
+				response.setCharacterEncoding("UTF-8");
+				Gson g = new Gson();
+				out = response.getWriter();
+				String str = g.toJson("true");
+				out.print(str);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

@@ -36,4 +36,10 @@ public class UsersServiceImpl implements UsersService{
 		return this.usersDao.getTotal(clazz);
 	}
 
+
+	@Override
+	public void delete(String[] ids) {
+		this.usersDao.delete(ids);
+	}
+
 }

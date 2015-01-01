@@ -69,4 +69,17 @@ public class UsersDaoImpl implements UsersDao {
 		}
 		return count;
 	}
+
+	@Override
+	public void delete(String[] ids) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "delete from Users u where u.id="+ids[0];
+		if(ids!=null && ids.length>1){
+			for(int i=1;i<ids.length;i++){
+				hql+=" or u.id="+ids[i];
+			}
+		}
+		Query query = session.createQuery(hql);
+		query.executeUpdate();
+	}
 }

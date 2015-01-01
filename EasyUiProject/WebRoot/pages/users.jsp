@@ -102,8 +102,17 @@
 								for(var i=0;i<rows.length;i++){
 									ids.push(rows[i].id);
 								}
-								$.ajax(function(){
-									
+								$.ajax({
+									url : getPath() + '/users_delete.action',
+									data:{
+										ids:ids.join(',')
+									},
+									dataType:'json',
+									success:function(data){
+										if(data=="true"){
+											$('#dg').datagrid('load');
+										}
+									}
 								});
 							}
 						});

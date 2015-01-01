@@ -9,4 +9,5 @@ public interface UsersDao {
 	Users findUser(String uaername,String password);
 	List<Users> view(Users users,int page,int rows,String sort,String order);
 	Long getTotal(String clazz);
+	void delete(String [] ids);
 }
