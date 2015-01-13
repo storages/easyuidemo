@@ -64,6 +64,9 @@ public class InitMenu implements ServletContextListener,
 			if (str.contains("--") || "".equals(str.trim())) {
 				continue;
 			}
+			if(str.trim().lastIndexOf(";")==-1){
+				str+=";";
+			}
 			menuDao.invocationInsertSql(str);
 		}
 		System.out.println("----初始化数据完成----");
