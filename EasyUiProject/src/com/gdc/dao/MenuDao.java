@@ -10,4 +10,5 @@ public interface MenuDao {
 	Menu getreeNode(Integer id);
 	List queryTreeNode(Integer id);
 	Integer countChildren(String id);
+	void invocationInsertSql(String sql);
 }

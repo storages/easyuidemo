@@ -25,6 +25,10 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<!-- 系统启动时，自动加载用户的监听 -->
+	<bean id="initMenu" class="com.gdc.init.InitMenu">
+		<property name="menuDao" ref="menuDao"/>
+	</bean>
 	
 	<!-- 配置UsersService 注入UsersService 的依赖 usersDao-->
 	<bean id="usersService" class="com.gdc.service.impl.UsersServiceImpl">
@@ -55,7 +59,6 @@
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-	
 	
 	
 	
