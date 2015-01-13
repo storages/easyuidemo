@@ -1,23 +1,24 @@
--- ÕâÊÇsqlserver2008 SQL
+ï»¿-- è¿™æ˜¯sqlserver2008 SQL
 
--- users±í
-insert into users(NAME,PASSWORD,EMAIL,ADDRESS) values('admin','admin','123456789@qq.com','¹ã¶«Ê¡¶«İ¸ÊĞ');
+-- usersè¡¨
+insert into users(NAME,PASSWORD,EMAIL,ADDRESS) values('admin','admin','123456789@qq.com','å¹¿ä¸œçœä¸œèå¸‚');
 
--- menu±í
-insert into menu(ID,PID,TEXT,STATE,URL) values (N'0',NULL,N'ÁªË¶¹ÜÀíÏµÍ³',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values (N'1',N'0',N'ÏµÍ³ÉèÖÃ',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'10',N'2',N'¼ÆÁ¿µ¥Î»¹ÜÀí',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'11',N'2',N'½»Ò×»õ±Ò¹ÜÀí',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'12',N'3',N'ÎïÁÏÀàĞÍ',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'13',N'3',N'Èë¿â',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'14',N'3',N'³ö¿â',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'15',N'3',N'¿â´æ',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'16',N'1',N'Ìí¼ÓÓÃ»§',N'closed',N'users_regester.action');
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'2',N'0',N'»ù´¡×ÊÁÏÉèÖÃ',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'3',N'0',N'ÎïÁÏ¹ÜÀí',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'4',N'0',N'ÏúÊÛ¹ÜÀí',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'5',N'0',N'²ÆÎñ¹ÜÀí',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'6',N'1',N'È¨ÏŞÉèÖÃ',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'7',N'1',N'ÏµÍ³ÈÕÖ¾',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'8',N'2',N'¿Í»§¹ÜÀí',N'closed',NULL);
-insert  into menu(ID,PID,TEXT,STATE,URL) values(N'9',N'2',N'¹©Ó¦ÉÌ¹ÜÀí',N'closed',NULL);
+-- menuè¡¨
+insert into menu(ID,PID,TEXT,STATE,URL) values (N'0',NULL,N'è”ç¡•ç®¡ç†ç³»ç»Ÿ',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values (N'1',N'0',N'ç³»ç»Ÿè®¾ç½®',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'10',N'2',N'è®¡é‡å•ä½ç®¡ç†',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'11',N'2',N'äº¤æ˜“è´§å¸ç®¡ç†',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'12',N'3',N'ç‰©æ–™ç±»å‹',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'13',N'3',N'å…¥åº“',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'14',N'3',N'å‡ºåº“',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'15',N'3',N'åº“å­˜',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'16',N'1',N'æ·»åŠ ç”¨æˆ·',N'closed',N'users_regester.action');
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'2',N'0',N'åŸºç¡€èµ„æ–™è®¾ç½®',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'3',N'0',N'ç‰©æ–™ç®¡ç†',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'4',N'0',N'é”€å”®ç®¡ç†',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'5',N'0',N'è´¢åŠ¡ç®¡ç†',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'6',N'1',N'æƒé™è®¾ç½®',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'7',N'1',N'ç³»ç»Ÿæ—¥å¿—',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'8',N'2',N'å®¢æˆ·ç®¡ç†',N'closed',NULL);
+insert  into menu(ID,PID,TEXT,STATE,URL) values(N'9',N'2',N'ä¾›åº”å•†ç®¡ç†',N'closed',NULL);
+
